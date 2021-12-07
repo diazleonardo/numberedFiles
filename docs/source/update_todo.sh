@@ -1,1 +1,0 @@
-/home/ldm/src/Python/update_todo.sh

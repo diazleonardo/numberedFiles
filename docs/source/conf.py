@@ -3,10 +3,10 @@ import sys
 
 
 sys.path.insert(0, os.path.abspath('..'))
-sys.path.insert(0, os.path.abspath('../src'))
+sys.path.insert(0, os.path.abspath('../../src'))
 
 # import src
-from source.conf_local import git_tag
+from conf_local import git_tag
 
 # -- Project information -----------------------------------------------------
 
