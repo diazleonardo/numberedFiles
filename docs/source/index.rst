@@ -12,7 +12,6 @@ Welcome to Numbered Files's documentation!
 
    README
 
-   numbered_files
    TODO
    changelog
 
