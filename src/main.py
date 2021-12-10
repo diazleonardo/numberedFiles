@@ -1,16 +1,23 @@
-# This is a sample Python script.
+import os
+import logging
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from numbered_files import NumberedFiles
 
 
-# Press the green button in the gutter to run the script.
+def main():
+    nf_class = NumberedFiles("nf{:04d}.tmp")
+    nf = iter(nf_class)
+
+    logger.debug(f"{next(nf)}")
+    logger.debug(f"{next(nf)}")
+    logger.debug(f"{next(nf)}")
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    logging.basicConfig(format='%(levelname)-4.4s %(module)-9.9s %(lineno)4d - %(message)s', level=logging.DEBUG)
+    logger = logging.getLogger(__file__)
+    logger.info("Starting %s", os.path.realpath(__file__))
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
+
+    logger.info("Finished")
