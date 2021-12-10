@@ -10,6 +10,8 @@ Welcome to Numbered Files's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   README
+
    numbered_files
    TODO
    changelog
