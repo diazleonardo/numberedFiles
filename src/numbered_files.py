@@ -9,11 +9,9 @@ logger = logging.getLogger(__name__)
 
 
 class NumberedFiles:
-    """Yield numbered files following the defined pattern.
-    """
+    """Yield numbered files following the defined pattern."""
 
     def __init__(self, pattern: str, path: str = None, start: int = 0, reset: bool = False):
-
         # get pattern splits
         r = re.match(r'([^{]*){:([^}]+)}(.*)$', pattern)
         foo = r.regs[1:]
@@ -23,7 +21,6 @@ class NumberedFiles:
         self.max = 10 ** int(d)
         self._post = pattern[foo[2][0]:foo[2][1]]
         self.pattern = pattern
-
         self._path = gettempdir() if path is None else path
         self.start = self._find_largest_numbered_file(Path(self._path)) if not reset else start
 
