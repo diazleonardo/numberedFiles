@@ -5,8 +5,6 @@ import sys
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('../../src'))
 
-# import src
-from conf_local import git_tag
 
 # -- Project information -----------------------------------------------------
 
@@ -15,8 +13,8 @@ copyright = '2021, Leonardo Díaz'
 author = 'Leonardo Díaz'
 
 # The full version, including alpha/beta/rc tags
-version = '0.'
-release = f"{version}{git_tag()}"
+version = '1.'
+release = f"{version}{0}"
 
 # -- General configuration ---------------------------------------------------
 

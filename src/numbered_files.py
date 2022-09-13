@@ -1,5 +1,5 @@
-import sys
-import os
+"""Yield numbered files following the defined pattern.
+"""
 import re
 from pathlib import Path
 from tempfile import gettempdir
@@ -9,19 +9,18 @@ logger = logging.getLogger(__name__)
 
 
 class NumberedFiles:
-    """Yield numbered files following the defined pattern.
-    """
+    """Yield numbered files following the defined pattern."""
 
     def __init__(self, pattern: str, path: str = None, start: int = 0, reset: bool = False):
 
         # get pattern splits
-        r = re.match(r'([^{]*){:([^}]+)}(.*)$', pattern)
-        foo = r.regs[1:]
-        self._pre = pattern[foo[0][0]:foo[0][1]]
-        digits = pattern[foo[1][0]:foo[1][1]]
-        d = re.sub('[^0-9]', '', digits)
-        self.max = 10 ** int(d)
-        self._post = pattern[foo[2][0]:foo[2][1]]
+        regex = re.match(r'([^{]*){:([^}]+)}(.*)$', pattern)
+        borders = regex.regs[1:]
+        self._pre = pattern[borders[0][0]:borders[0][1]]
+        digits = pattern[borders[1][0]:borders[1][1]]
+        partial_digits = re.sub('[^0-9]', '', digits)
+        self.max = 10 ** int(partial_digits)
+        self._post = pattern[borders[2][0]:borders[2][1]]
         self.pattern = pattern
 
         self._path = gettempdir() if path is None else path
@@ -48,8 +47,9 @@ class NumberedFiles:
 
     def __next__(self):
         if self.start < self.max:
-            foo = Path(self._path) / str(self.pattern.format(self.start))
+            _next = Path(self._path) / str(self.pattern.format(self.start))
         else:
-            raise StopIteration(f"File pattern does not allow numbers larger than {self.start -1:,d}")
+            raise StopIteration("File pattern does not allow numbers "
+            f"larger than {self.start-1:,d}")
         self.start += 1
-        return foo
+        return _next

@@ -1,8 +1,9 @@
-README
-======
+Numbered Files README
+=====================
 
 
-Yield numbered files following the defined pattern.
+Yield numbered files names following the defined pattern.
+
 
 :pattern: str required
 
@@ -18,7 +19,7 @@ Yield numbered files following the defined pattern.
 
   - The `path` argument defines where the files will be created.
     If the path is `None` (the default) the files will be created in the system temporary files
-    structure, under [Li|U]nix `/tmp/`.
+    structure. Under [Li|U]nix `/tmp/`.
 
   - If `path` begins with a `os.sep` (forward/backward slash normally) it is assumed an absolute path
     and the files will be created on that directory (that will be created if necessary).
@@ -29,13 +30,13 @@ Yield numbered files following the defined pattern.
 
   .. _start-target:
 
-:start: int (0)
+:start: int (default=0)
 
   - forces the number to start the sequence.  May be usefull if you don't want to overwrite
     existing files, or may want to the starting digit as a run number (setting start to 1000 an
     the first run, 2000 on the second, etc)
 
-:reset: bool (False)
+:reset: bool (default=False)
 
   - This the only case where files may be overwritten.  If set to `True` it will start with the number
     set by `start` (or zero if None) and happily overwrite your previous work.  Default is `False`
